@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Backups - Emas Docs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.5.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Emas Docs</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="chapter" data-path="about/">
+<a href="../../about/">Que es esto?</a>
+<li class="header">Cloudflare</li>
+
+<li>
+<a href="../../cloudflare/" class="">Que es Cloudflare?</a>
+</li>
+
+<li>
+<a href="#">Tuneles</a>
+<ul>
+
+<li>
+<a href="../../cloudflare/tuneles/" class="">Que es un túnel?</a>
+</li>
+
+<li>
+<a href="../../cloudflare/tuneles/basic_config/" class="">Crear subdominio</a>
+</li>
+</ul>
+</li>
+
+<li class="header">Odoo</li>
+
+<li>
+<a href="./" class="active">Backups</a>
+</li>
+
+<li>
+<a href="../odoofy/" class="">Guía básica de Odoofy</a>
+</li>
+
+<li>
+<a href="../server_management/" class="">Gestión de servidores Odoo</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h2 id="setup-mount-para-remote-backups">Setup mount para remote backups</h2>
+<p>Actualmente el <a href="#script-de-backup">script de backups</a> envia los archivos a la carpeta <code>/mnt/backups</code>.
+Esta carpeta es un mount del servidor de backups (sincronización de archivos).</p>
+<p>Para hacer el montaje seguimos los siguientes pasos:</p>
+<ol>
+<li><code>sudo nano /etc/fstab</code> Editamos el archivo <strong>fstab</strong>. Inserimos el siguiente texto:</li>
+</ol>
+<blockquote>
+<p><code>//&lt;IP&gt;/BAK/&lt;RUTA&gt; /mnt/backups cifs vers=3.0,iocharset=utf8,file_mode=0777,dir_mode=0777,noperm,credentials=&lt;RUTA CREDENCIALES&gt; 0 0</code></p>
+</blockquote>
+<ul>
+<li><strong>IP</strong>: Es la dirección IP del servidor de backups. Ej. <code>192.168.60.9</code></li>
+<li><strong>RUTA</strong>: Es la ruta en el servidor de backups donde se guardaran los archivos. Ej. <code>ODOO_PROYECTO</code>  </li>
+<li>
+<p><strong>RUTA CREDENCIALES</strong>: Es la ruta del archivo de credenciales. Ej. <code>/home/emas/.backup-credentials</code></p>
+</li>
+<li>
+<p>Creamos el archivo <code>.backup-credentials</code> en la raíz del usuario. I ponemos los credenciales del servidor de backup:<br />
+<code>username=odoo</code><br />
+<code>password=B4ckup$2023%</code></p>
+</li>
+<li>
+<p>Aseguramos que la utilidad cifs esta instalada <code>sudo apt install cifs-utils</code>.</p>
+</li>
+<li>Montamos los drives con <code>sudo mount -a</code>.</li>
+</ul>
+<h2 id="tarea-programada">Tarea programada</h2>
+<p>Con el comando: <code>crontab -e</code>;
+podemos modificar el archivo de tareas automaticas. Añadir la siguiente linia:</p>
+<pre><code class="language-yaml">0 12 * * * &lt;ruta-al-proyecto&gt;/backup_script.sh
+</code></pre>
+<p>Cada línia de este archivo añade una tarea que se ejecuta automáticamente en el
+tiempo que se le ha asignado.</p>
+<pre><code>.--------------- minuto (0-59)
+|  .------------ hora (0-23)
+|  |  .--------- día del mes (1-31)
+|  |  |  .------ mes (1-12) o jan,feb,mar,apr,may,jun,jul... (meses en inglés)
+|  |  |  |  .--- día de la semana (0-6) (domingo=0 o 7)
+|  |  |  |  |
+*  *  *  *  *  comando a ejecutar
+</code></pre>
+<h3 id="script-de-backup">Script de backup</h3>
+<pre><code class="language-bash">#!/bin/bash
+
+# Set variables
+backup_dir=&quot;/mnt/backups/odoo/17&quot;
+date_suffix=$(date +%Y%m%d%H%M%S)
+
+# Ensure the backup directory exists
+mkdir -p &quot;$backup_dir&quot;
+
+# Backup the database
+curl -X POST -F 'master_pwd=odoo17' -F 'name=odoo17002' -F 'backup_format=zip' -o $backup_dir/02-comatec-$date_suffix.zip http://192.168.1.208:17002/web/database/backup
+
+# Remove old backups (keep only the most recent 5)
+ls -dt $backup_dir/* | tail -n +6 | xargs rm -rf
+</code></pre>
+<p>En ruta, ponemos la ruta de la carpeta que CONTIENE la base de datos.
+En nombre, ponemos el nombre del proyecto (podemos poner subcarpetas para organizar mejor los backups EJ.<code>/proyecto/nombre_fecha</code>).</p>
+<style>
+.search-results {
+  display: none;
+}
+</style>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>

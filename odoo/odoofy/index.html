@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Guía básica de Odoofy - Emas Docs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.5.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="../.." target="_blank" class="custom-link">Emas Docs</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="../..">Home</a>
+<li class="chapter" data-path="about/">
+<a href="../../about/">Que es esto?</a>
+<li class="header">Cloudflare</li>
+
+<li>
+<a href="../../cloudflare/" class="">Que es Cloudflare?</a>
+</li>
+
+<li>
+<a href="#">Tuneles</a>
+<ul>
+
+<li>
+<a href="../../cloudflare/tuneles/" class="">Que es un túnel?</a>
+</li>
+
+<li>
+<a href="../../cloudflare/tuneles/basic_config/" class="">Crear subdominio</a>
+</li>
+</ul>
+</li>
+
+<li class="header">Odoo</li>
+
+<li>
+<a href="../backups/" class="">Backups</a>
+</li>
+
+<li>
+<a href="./" class="active">Guía básica de Odoofy</a>
+</li>
+
+<li>
+<a href="../server_management/" class="">Gestión de servidores Odoo</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="guia-basica-de-odoofy">Guía básica de Odoofy</h1>
+<p>La herramienta Odoofy permite crear un entorno de desarrollo para Odoo en una máquina UNIX (Linux o MACOS, de momento no soporta Windows aunque puede instalarse en WSL). El ejecutable de Odoofy se puede descargar desde el siguiente enlace: <a href="https://github.com/GenisEMAS/Odoofy/releases/download/Release/odoofy">Descargar Odoofy</a>.</p>
+<h2 id="funcionamiento-de-odoofy">Funcionamiento de Odoofy</h2>
+<p>Odoofy consta de dos partes: la función de <strong>servidor</strong> web para ejecutar comandos desde la página https://odoofy.emas-solutions.es y la función <strong>build</strong> que permite crear un entorno de desarrollo de Odoo. La pagina web de odoofy montara las instancias Odoo en la maquina en la que este preparada. </p>
+<p>Una vez se monte la instancia, se podra acceder a ella desde la ip de la máquina y el puerto que se haya configurado. En estos momentos <em>(11-01-2024)</em> la web de odoofy esta en <em>(192.168.1.207)</em> desde la red de EMAS. </p>
+<p>Utilizaremos la función build para el montaje rápido de entornos, ya que montar un servidor web requiere de una configuración más compleja.</p>
+<h3 id="funcion-build">Función build</h3>
+<p>Una vez que se ha descargado el programa Odoofy en una máquina, se puede ejecutar directamente:</p>
+<p><code>./odoofy -h</code> Esto mostrará información sobre la herramienta (esto asume que <strong>odoofy</strong> se encuentra en la misma carpeta en la que estamos).</p>
+<p>Si ejecutamos <code>./odoofy build</code> directamente, montará un entorno de desarrollo de Odoo en la máquina en la que estamos, con la versión de Odoo <strong>16</strong> y el nombre/puerto <strong>16000</strong> <em>(11/01/2024)</em>.</p>
+<blockquote>
+<p>Luego podemos acceder con <code>localhost:16000</code> o <code>ip:16000</code> si estamos en remoto, desde el navegador.</p>
+</blockquote>
+<p>Para cambiar la versión o configuración de Odoo a montar, se puede utilizar un archivo como parámetro. Por ejemplo:</p>
+<p><code>./odoofy build configuracion.json</code>.</p>
+<p>Un ejemplo de la estrucura del archivo de configuración es el siguiente:</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;17&quot;,
+  &quot;nombre_proyecto&quot;: &quot;01&quot;,
+  &quot;nombre_servidor&quot;: &quot;localhost&quot;,
+  &quot;idiomas&quot;: [
+    &quot;es_ES&quot;,
+    &quot;en_US&quot;
+  ],
+  &quot;enterprise&quot;: true,
+  &quot;developer_mode&quot;: true,
+  &quot;modules&quot;: [
+    &quot;mail&quot;
+  ],
+  &quot;preprod&quot;: false,
+}
+</code></pre>
+<p>Todos los parámetros son obligatorios, el orden no importa, pero el nombre de los parámetros sí, ya que son los que utiliza Odoofy para montar el entorno.</p>
+<h3 id="cosas-a-tener-en-cuenta">Cosas a tener en cuenta</h3>
+<ul>
+<li>La versión y el nombre del proyecto siempre deben tener 2 dígitos, por ejemplo: <strong>16</strong> y <strong>02</strong>, ya que Odoofy utiliza estos valores para elegir el puerto a utilizar.</li>
+<li><code>enterprise: true</code> solo modificará el puerto y nombre de la base de datos, por ejemplo, de <strong>16002</strong> a <strong>16102</strong>. Actualmente, si en la máquina no existe ningún proyecto enterprise, este no será de tipo enterprise.</li>
+<li>El modo desarrollador llena la base de datos con datos de prueba.</li>
+<li><code>preprod: true</code> no afecta a Odoo directamente, sino que elige puertos alternativos como <strong>16202</strong> para normal y <strong>16302</strong> para enterprise.</li>
+<li>Finalmente, los módulos son los que se instalarán en el entorno. En la lista de <code>modules</code>, estos deben tener el nombre exacto que se muestra en su información. La función no ha sido completamente probada con módulos de terceros y se recomienda esperar a instalarlos manualmente (mail viene por defecto).</li>
+</ul>
+<h3 id="notas">Notas</h3>
+<p>Estructura de carpetas de Odoofy:</p>
+<pre><code>/opt/odoo16/
+├── addons
+├── framework
+├── projects
+│   ├── 01
+│   ├── enterprise.conf
+│   ├── enterprise.log
+│   ├── enterprise.service
+│   ├── odoo.conf
+│   ├── odoo.log
+│   ├── odoo.service
+│   ├── addons
+│   │   ├── community
+│   │   ├── custom
+│   │   ├── private
+│   │   └── public
+│   ├── resources
+│   │   ├── geoip
+│   │   ├── screencasts
+│   │   └── screenshots
+│   └── runtime
+│       ├── enterprise
+│       └── odoo
+└── venv
+</code></pre>
+<p>Desglose de los puertos utilizados por Odoofy:</p>
+<p><strong>16022</strong></p>
+<pre><code>16 = Versión de Odoo  
+0  = No es enterprise ni preproducción
+22 = Número de proyecto
+</code></pre>
+<p>Tabla de puertos utilizados por Odoofy:</p>
+<table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Enterprise</th>
+<th>Preproducción</th>
+<th>Puertos (web - data)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16</td>
+<td>No</td>
+<td>No</td>
+<td>16000 - 16500</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Sí</td>
+<td>No</td>
+<td>16100 - 16600</td>
+</tr>
+<tr>
+<td>16</td>
+<td>No</td>
+<td>Sí</td>
+<td>16200 - 16700</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>16302 - 16800</td>
+</tr>
+</tbody>
+</table>
+<style>
+.search-results {
+  display: none;
+}
+</style>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../../js/main.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/gitbook.min.js"></script>
+<script src="../../js/theme.min.js"></script>
+</body>
+</html>
