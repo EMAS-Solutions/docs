@@ -57,17 +57,30 @@ tiempo que se le ha asignado.
 #!/bin/bash
 
 # Set variables
-backup_dir="/mnt/backups/odoo/17"
+backup_dir="/mnt/backups"
 date_suffix=$(date +%Y%m%d%H%M%S)
+declare -A projects
 
-# Ensure the backup directory exists
-mkdir -p "$backup_dir"
+# Configure projects: project_name="master_pwd dbname backup_format"
+projects[Comatec-02]="odoo/17 odoo17 odoo17002 17002"
+projects[Emas-01]="odoo/16 admin odoo16101 16101"
 
-# Backup the database
-curl -X POST -F 'master_pwd=odoo17' -F 'name=odoo17002' -F 'backup_format=zip' -o $backup_dir/02-comatec-$date_suffix.zip http://192.168.1.208:17002/web/database/backup
+# Ensure the backup directory exists and backup the databases
+for project in "${!projects[@]}"; do
+    IFS=' ' read -r -a config <<< "${projects[$project]}"
+    sub_path=${config[0]}
+    master_pwd=${config[1]}
+    dbname=${config[2]}
+    port=${config[3]}
 
-# Remove old backups (keep only the most recent 5)
-ls -dt $backup_dir/* | tail -n +14 | xargs rm -rf
+    main_path="$backup_dir/$sub_path/$project"
+
+    mkdir -p $main_path
+
+    curl -X POST -F "master_pwd=$master_pwd" -F "name=$dbname" -F "backup_format=$backup_format" -o "$main_path/$date_suffix.zip" "http://192.168.1.208:$port/web/database/backup"
+
+    ls -dt "$main_path/"* | tail -n +15 | xargs rm -rf
+done
 ```
 
 
