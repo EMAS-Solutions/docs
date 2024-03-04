@@ -1,6 +1,6 @@
 # Crear subdominio
 
-#### [Tiene un tunel la maquina servidor?](index.md#tengo-tunel)
+#### [Tiene un tunel la maquina servidor?](index.md#la-maquina-tiene-un-tunel)
 
 Debemos ir al apartado de Zero Trust → Tunnels de la página [Dashboard de Cloudflare](https://one.dash.cloudflare.com/).
 ![DemoZeroTrust](ZeroTrust.png)

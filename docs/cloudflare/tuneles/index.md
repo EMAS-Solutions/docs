@@ -7,7 +7,7 @@ ya que éste va a crear nuestra salida de la maquina hacia la gestión de Cloudf
 
 ##### [Quiero crear solo un subdominio](basic_config.md)
 
-<h4 id="tengo-tunel">La máquina tiene un túnel</h4>
+#### La máquina tiene un túnel
 Es posible que la máquina en la que se pretende instalar el acceso Cloudflare ya
 disponga de un túnel instalado.  
 
