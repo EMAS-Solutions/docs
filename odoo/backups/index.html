@@ -6,7 +6,7 @@
 <title>Backups - Emas Docs</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<meta name="generator" content="mkdocs-1.5.3, mkdocs-gitbook-1.0.7">
+<meta name="generator" content="mkdocs-1.1.2, mkdocs-gitbook-1.0.7">
 
 <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 <meta name="HandheldFriendly" content="true"/>
@@ -41,6 +41,10 @@
 </li>
 
 <li>
+<a href="../../cloudflare/ssl_odoo/" class="">SSL Odoo + Cloudflare</a>
+</li>
+
+<li>
 <a href="#">Tuneles</a>
 <ul>
 
@@ -52,6 +56,12 @@
 <a href="../../cloudflare/tuneles/basic_config/" class="">Crear subdominio</a>
 </li>
 </ul>
+</li>
+
+<li class="header">Emas</li>
+
+<li>
+<a href="../../emas/estructura/" class="">Estructura de EMAS</a>
 </li>
 
 <li class="header">Odoo</li>
@@ -111,27 +121,34 @@ Theme by GitBook
 Esta carpeta es un mount del servidor de backups (sincronización de archivos).</p>
 <p>Para hacer el montaje seguimos los siguientes pasos:</p>
 <ol>
-<li><code>sudo nano /etc/fstab</code> Editamos el archivo <strong>fstab</strong>. Inserimos el siguiente texto:</li>
+<li><code>sudo nano /etc/fstab</code> Editamos el archivo <strong>fstab</strong>. Inserimos la siguiente línea:</li>
 </ol>
 <blockquote>
-<p><code>//&lt;IP&gt;/BAK/&lt;RUTA&gt; /mnt/backups cifs vers=3.0,iocharset=utf8,file_mode=0777,dir_mode=0777,noperm,credentials=&lt;RUTA CREDENCIALES&gt; 0 0</code></p>
+<p><code>//&lt;IP&gt;/BAK/&lt;RUTA&gt; /mnt/backups cifs vers=1.0,iocharset=utf8,file_mode=0777,dir_mode=0777,noperm,credentials=&lt;RUTA CREDENCIALES&gt; 0 0</code></p>
 </blockquote>
 <ul>
-<li><strong>IP</strong>: Es la dirección IP del servidor de backups. Ej. <code>192.168.60.9</code></li>
-<li><strong>RUTA</strong>: Es la ruta en el servidor de backups donde se guardaran los archivos. Ej. <code>ODOO_PROYECTO</code>  </li>
+<li><strong>IP</strong>: Es la dirección IP del servidor de backups. Ej. <code>192.168.1.5</code></li>
+<li><strong>RUTA</strong>: Es la ruta en el servidor de backups donde se guardaran los archivos. Ej. <code>emas/88-Proyectos/Backups</code>  </li>
 <li>
 <p><strong>RUTA CREDENCIALES</strong>: Es la ruta del archivo de credenciales. Ej. <code>/home/emas/.backup-credentials</code></p>
 </li>
 <li>
 <p>Creamos el archivo <code>.backup-credentials</code> en la raíz del usuario. I ponemos los credenciales del servidor de backup:<br />
-<code>username=odoo</code><br />
-<code>password=B4ckup$2023%</code></p>
+<code>domain=EMASIT</code>
+<code>username=Developer</code><br />
+<code>password=D3v3#2021</code></p>
 </li>
 <li>
 <p>Aseguramos que la utilidad cifs esta instalada <code>sudo apt install cifs-utils</code>.</p>
 </li>
 <li>Montamos los drives con <code>sudo mount -a</code>.</li>
 </ul>
+<h3 id="gestion-errores">Gestión errores</h3>
+<p>Dependiendo del sistema operativo del servidor de backups, es posible que tengamos que cambiar el protocolo de montaje.</p>
+<p>Si el servidor de backups no es Windows, es posible que tengamos que cambiar <code>vers=1.0</code> por <code>vers=3.0</code>. <em>(También más seguro)</em>.</p>
+<p>Para comprobar la connexión a una carpeta compartida podemos utilizar el comando:<br />
+<code>smbclient -L //&lt;IP&gt;/BAK -U &lt;(DOMINIO)/USUARIO&gt;</code>.
+Aquí podemos comprobar si el servidor es accesible y si los credenciales son correctos. <em>El dominio es opcional y solo necessario en Windows</em>.</p>
 <h2 id="tarea-programada">Tarea programada</h2>
 <p>Con el comando: <code>crontab -e</code>;
 podemos modificar el archivo de tareas automaticas. Añadir la siguiente linia:</p>
@@ -151,17 +168,30 @@ tiempo que se le ha asignado.</p>
 <pre><code class="language-bash">#!/bin/bash
 
 # Set variables
-backup_dir=&quot;/mnt/backups/odoo/17&quot;
+backup_dir=&quot;/mnt/backups&quot;
 date_suffix=$(date +%Y%m%d%H%M%S)
+declare -A projects
 
-# Ensure the backup directory exists
-mkdir -p &quot;$backup_dir&quot;
+# Configure projects: project_name=&quot;master_pwd dbname backup_format&quot;
+projects[Comatec-02]=&quot;odoo/17 odoo17 odoo17002 17002&quot;
+projects[Emas-01]=&quot;odoo/16 admin odoo16101 16101&quot;
 
-# Backup the database
-curl -X POST -F 'master_pwd=odoo17' -F 'name=odoo17002' -F 'backup_format=zip' -o $backup_dir/02-comatec-$date_suffix.zip http://192.168.1.208:17002/web/database/backup
+# Ensure the backup directory exists and backup the databases
+for project in &quot;${!projects[@]}&quot;; do
+    IFS=' ' read -r -a config &lt;&lt;&lt; &quot;${projects[$project]}&quot;
+    sub_path=${config[0]}
+    master_pwd=${config[1]}
+    dbname=${config[2]}
+    port=${config[3]}
 
-# Remove old backups (keep only the most recent 5)
-ls -dt $backup_dir/* | tail -n +6 | xargs rm -rf
+    main_path=&quot;$backup_dir/$sub_path/$project&quot;
+
+    mkdir -p $main_path
+
+    curl -X POST -F &quot;master_pwd=$master_pwd&quot; -F &quot;name=$dbname&quot; -F &quot;backup_format=$backup_format&quot; -o &quot;$main_path/$date_suffix.zip&quot; &quot;http://192.168.1.208:$port/web/database/backup&quot;
+
+    ls -dt &quot;$main_path/&quot;* | tail -n +15 | xargs rm -rf
+done
 </code></pre>
 <p>En ruta, ponemos la ruta de la carpeta que CONTIENE la base de datos.
 En nombre, ponemos el nombre del proyecto (podemos poner subcarpetas para organizar mejor los backups EJ.<code>/proyecto/nombre_fecha</code>).</p>

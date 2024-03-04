@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>Que es un túnel? - Emas Docs</title>
+<title>SSL Odoo + Cloudflare - Emas Docs</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="generator" content="mkdocs-1.1.2, mkdocs-gitbook-1.0.7">
@@ -41,7 +41,7 @@
 </li>
 
 <li>
-<a href="../ssl_odoo/" class="">SSL Odoo + Cloudflare</a>
+<a href="./" class="active">SSL Odoo + Cloudflare</a>
 </li>
 
 <li>
@@ -49,11 +49,11 @@
 <ul>
 
 <li>
-<a href="./" class="active">Que es un túnel?</a>
+<a href="../tuneles/" class="">Que es un túnel?</a>
 </li>
 
 <li>
-<a href="basic_config/" class="">Crear subdominio</a>
+<a href="../tuneles/basic_config/" class="">Crear subdominio</a>
 </li>
 </ul>
 </li>
@@ -116,42 +116,72 @@ Theme by GitBook
 
 
 
-<h1 id="que-es-un-tunel">Que es un túnel?</h1>
-<p>Un túnel de Cloudflare es una conexión segura que permite enrutar el tráfico de un servidor web a través del domino especificado. Esto proporciona beneficios como mejoras en la seguridad, el rendimiento y la disponibilidad del sitio web de manera segura y extremadamente sencilla.</p>
-<h3 id="quiero-un-nuevo-subdominio-disponible-como-creo-el-tunel">Quiero un nuevo subdominio disponible, como creo el túnel?</h3>
-<p>És posible que no necesites crear un túnel; cada máquina o servidor que tenga servicios a publicar solo necesita <strong>un solo túnel</strong> <em>(<a href="#Túnel maestro">o ninguno*</a></em>),
-ya que éste va a crear nuestra salida de la maquina hacia la gestión de Cloudflare, desde la que se hará la configuración de todos servicios y dominios existentes.</p>
-<h5 id="quiero-crear-solo-un-subdominio"><a href="basic_config/">Quiero crear solo un subdominio</a></h5>
-<h4 id="tengo-tunel">La máquina tiene un túnel</h4>
-<p>Es posible que la máquina en la que se pretende instalar el acceso Cloudflare ya
-disponga de un túnel instalado.  </p>
-<p>Si tenemos acceso SSH a la máquina podemos comprobar la existencia de túneles en
-ésta:  </p>
-<p><code>cloudflared tunnel list</code></p>
-<p>En caso de que de que no haya túneles o no exista cloudflared podemos proceder igual ya que la máquina está limpia.</p>
-<h4 id="creacion-de-un-tunel-zero-trust">Creación de un túnel <em>(Zero Trust)</em></h4>
-<p>Cuando sabemos que una maquina no tiene túneles el proceso de montaje de uno es muy sencillo:  </p>
-<p>Debemos ir al apartado de Zero Trust → Tunnels de la página <a href="https://one.dash.cloudflare.com/">Dashboard de Cloudflare</a>.
-<img alt="DemoZeroTrust" src="ZeroTrust.png" />
-<img alt="SeccionTunelesDemo" src="Tuneles.png" />
-Una vez aquí vamos a ver listados todos los túneles existentes enlazados a nuestra cuenta.
-La página muestra una lista de túneles con:  </p>
-<ul>
-<li>El nombre del túnel  </li>
-<li>La URL o Dirección desde la que se accede al túnel  </li>
-<li>Su estado (Funcional o No)  </li>
-</ul>
-<p><img alt="CrearTunel" src="CreateTunel.png" />
-Para crear un túnel en una máquina en la que no exista ninguno le podemos dar a crear
-y copiar el script de instalado <strong>(seleccionar sistema operativo primero)</strong>, ésto va a hacer el montaje solo; en cuanto finalize podremos ver el estado <strong>conectado</strong> al final de ésta página.  </p>
-<h3 id="annexo">Annexo</h3>
-<h4 id="tunel-maestro">Túnel maestro</h4>
-<p>Proximamente...</p>
-<style>
-.search-results {
-  display: none;
+<h1 id="ssl-odoo-cloudflare">SSL Odoo + Cloudflare</h1>
+<p>Proceso SSL Odoo Cloudflare<br />
+1. Montado <strong>odoo16002</strong> via Odoofy.<br />
+<strong>$root</strong>: <code>/usr/bin/odoofy build odoo.json</code><br />
+2. Montado tunnel cloudflare en maquina para direccionar 16002.xxx.es ➝ 127.0.0.1:16002<br />
+3. Instalar nginx <br />
+<code>sudo apt -y install nginx</code><br />
+<code>sudo nano /etc/nginx/sites-enabled/16002.___.es</code><br />
+4. Nginx odoo proxy config<br />
+<code>sudo nginx -t</code> <em>(Test config)</em> <br />
+<code>systemctl restart nginx</code><br />
+5. Odoo cert creation<br />
+<code>sudo openssl genpkey -algorithm RSA -out /etc/ssl/private/odoo_cert_key.key -aes256</code><br />
+<strong>Odoo$443!</strong><br />
+<code>sudo openssl req -new -key /etc/ssl/private/odoo_cert_key.key -out /etc/ssl/certs/odoo_cert.csr</code><br />
+<code>openssl x509 -req -days 365 -in /etc/ssl/certs/odoo_cert.csr -signkey /etc/ssl/private/odoo_cert_key.key -out /etc/ssl/certs/certificate.crt</code>
+<code>sudo openssl rsa -in /etc/ssl/private/odoo_cert_key.key -out /etc/ssl/private/odoo_cert_pub.key</code></p>
+<h3 id="nginx-odoo-proxy-config">Nginx odoo proxy config</h3>
+<pre><code class="language-nginx">upstream odoo16 {
+    server 127.0.0.1:16002;
 }
-</style>
+
+upstream odoochat {
+    server 127.0.0.1:16002;
+}
+
+server {
+    listen 80;
+    server_name 16002.___.es;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name 16002.___.es;
+    ssl_certificate /etc/ssl/certs/certificate.crt;
+    ssl_certificate_key /etc/ssl/private/odoo_cert_key.key;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers 'TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-RSAAES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384';
+    access_log /var/log/nginx/odoo.access.log;
+    error_log /var/log/nginx/odoo.error.log;
+    proxy_buffers 16 64k;
+    proxy_buffer_size 128k;
+
+    location / {
+        proxy_pass http://odoo16;
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+    }
+
+    location /longpolling {
+        proxy_pass http://odoochat;
+    }
+
+    location ~* /web/static/ {
+        proxy_cache_valid 200 60m;
+        proxy_buffering on;
+        expires 864000;
+        proxy_pass http://odoo16;
+    }
+}
+</code></pre>
 
 
 </section>
