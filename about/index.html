@@ -289,6 +289,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#puedo-editar-esta-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Puedo editar esta documentación?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Puedo editar esta documentación?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mkdocs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -722,6 +746,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#puedo-editar-esta-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Puedo editar esta documentación?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Puedo editar esta documentación?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mkdocs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -748,7 +796,18 @@
 <h3 id="donde-se-encuentra-esto">Donde se encuentra esto?</h3>
 <p>Las páginas disponibles aquí estan en un <a href="https://github.com/emas-solutions/emas-docs">repositorio de GitHub</a> servido al público a través del servicio
 de <a href="https://pages.github.com/">GitHub Pages</a>, con la gestión de dominio de <strong>Cloudflare</strong>.</p>
-<p>Más información de ello en la sección de <a href="../cloudflare/">Cloudflare</a>.</p>
+<p>El dominio de este sitio <em>(<a href="https://docs.emas-solutions.com">docs.emas-solutions.com</a>)</em>, es gestionado por Cloudflare a través de un registro <strong>A</strong> que apunta a la dirección IP de GitHub Pages.</p>
+<h3 id="puedo-editar-esta-documentacion">Puedo editar esta documentación?</h3>
+<p>Es necessaria una mínima experiencia con <strong>Markdown</strong> y <strong>Git</strong> para poder editar la documentación.</p>
+<ol>
+<li>Clona el repositorio en tu máquina local con <code>git clone &lt;URL&gt;</code></li>
+<li>Empieza el proceso de desarrollo con <code>mkdocs serve</code><a href="#mkdocs">*</a></li>
+<li>Edita los archivos con tu editor de texto favorito en formato <strong>Markdown</strong></li>
+<li>Sube los cambios con <code>git push</code></li>
+<li>Para aplicar los cambios en el sitio web, se debe confirmar de que todo es correcto y luego ejecutar <code>mkdocs gh-deploy</code>.</li>
+</ol>
+<h4 id="mkdocs">Mkdocs</h4>
+<p>Mkdocs es la herramienta que se utiliza para montar esta pagina. Esta contruido con <strong>Python</strong> y se puede instalar con <code>pip install mkdocs</code> una vez ya disponemos de python en el equipo.</p>
 <style>
 .search-results {
   display: none;
