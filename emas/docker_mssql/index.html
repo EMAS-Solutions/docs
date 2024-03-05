@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.emas-solutions.es/cloudflare/">
+        <link rel="canonical" href="https://docs.emas-solutions.es/emas/docker_mssql/">
       
       
-        <link rel="prev" href="../about/">
+        <link rel="prev" href="../../cloudflare/tuneles/basic_config/">
       
       
-        <link rel="next" href="ssl_odoo/">
+        <link rel="next" href="../estructura/">
       
       
-      <link rel="icon" href="../assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
       
-        <title>Que es Cloudflare? - Emas Docs</title>
+        <title>SQL Server Docker - Emas Docs</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#que-es-cloudflare" class="md-skip">
+        <a href="#sql-server-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Emas Docs" class="md-header__button md-logo" aria-label="Emas Docs" data-md-component="logo">
+    <a href="../.." title="Emas Docs" class="md-header__button md-logo" aria-label="Emas Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Que es Cloudflare?
+              SQL Server Docker
             
           </span>
         </div>
@@ -187,7 +187,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Emas Docs" class="md-nav__button md-logo" aria-label="Emas Docs" data-md-component="logo">
+    <a href="../.." title="Emas Docs" class="md-nav__button md-logo" aria-label="Emas Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -205,7 +205,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -225,7 +225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -242,8 +242,6 @@
       
   
   
-    
-  
   
   
     
@@ -255,11 +253,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -273,7 +271,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Cloudflare
@@ -284,30 +282,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Que es Cloudflare?
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../cloudflare/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -316,35 +294,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#como-utiliza-emas-cloudflare" class="md-nav__link">
-    <span class="md-ellipsis">
-      Como utiliza EMAS Cloudflare?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -357,7 +306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ssl_odoo/" class="md-nav__link">
+      <a href="../../cloudflare/ssl_odoo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -415,7 +364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tuneles/" class="md-nav__link">
+      <a href="../../cloudflare/tuneles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -436,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tuneles/basic_config/" class="md-nav__link">
+      <a href="../../cloudflare/tuneles/basic_config/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -469,8 +418,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -480,11 +431,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -498,7 +449,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Emas
@@ -509,10 +460,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../emas/docker_mssql/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SQL Server Docker
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -521,6 +492,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-usar-docker-para-sql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Por qué usar Docker para SQL Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conexion-a-sql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión a SQL Server
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -533,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../emas/estructura/" class="md-nav__link">
+      <a href="../estructura/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../odoo/backups/" class="md-nav__link">
+      <a href="../../odoo/backups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -622,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../odoo/odoofy/" class="md-nav__link">
+      <a href="../../odoo/odoofy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -643,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../odoo/server_management/" class="md-nav__link">
+      <a href="../../odoo/server_management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -691,9 +718,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#como-utiliza-emas-cloudflare" class="md-nav__link">
+  <a href="#por-que-usar-docker-para-sql-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Como utiliza EMAS Cloudflare?
+      Por qué usar Docker para SQL Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conexion-a-sql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexión a SQL Server
     </span>
   </a>
   
@@ -714,13 +768,50 @@
                   
 
 
-<h1 id="que-es-cloudflare">Que es Cloudflare?</h1>
-<p>Cloudflare es una empresa de servicios de red que ofrece una gama de soluciones para mejorar el rendimiento y la seguridad de los sitios web, incluyendo <strong>CDN (Content Delivery Network)</strong>, protección contra ataques <strong>DDoS</strong> y <strong>firewall de aplicaciones web (WAF)</strong>.  </p>
-<p>Su plataforma ayuda a optimizar la entrega de contenido y proteger las aplicaciones en línea contra amenazas comunes en internet.  </p>
-<h3 id="como-utiliza-emas-cloudflare">Como utiliza EMAS Cloudflare?</h3>
-<p>Actualmente la gestión de dominios principal se hace a través de el propio registrador o la máquina principal de Plesk activa en EMAS.  </p>
-<p>El dominio base gestionado por nuesto Cloudflare es <em>emas-solutions.es</em> con el cual se montan la mayoría de <strong><a href="tuneles/">Túneles o subdominios</a></strong>.</p>
-<p>Para usar un túnel son necesarios un dominio y una maquina destino, generalmente el dominio ya está listo y configurado en Cloudflare así que no mostrare como hacer su configuración en este documento.</p>
+<h1 id="sql-server-docker">SQL Server Docker</h1>
+<p>Microsoft Sql Server es el proveedor de base de datos de Windows mas popular, por eso muchas aplicaciones empresariales están basadas en esta tecnología. En este documento se describe como instalar y configurar un servidor de base de datos SQL Server en un contenedor Docker.</p>
+<h3 id="por-que-usar-docker-para-sql-server">Por qué usar Docker para SQL Server</h3>
+<p>Mientras que SQLServer es una excelente base de datos, su instalación y configuración puede ser complicada debido a su enfoque en máquinas Windows. Docker permite instalar y configurar SQL Server en cualquier sistema operativo que soporte Docker, incluyendo Windows, Linux y MacOS.</p>
+<h3 id="requisitos">Requisitos</h3>
+<ul>
+<li>Una maquina con una instalación de <a href="https://docs.docker.com/engine/install/">Docker Engine</a> válida.  </li>
+</ul>
+<h2 id="instalacion">Instalación</h2>
+<p>Asumiendo que ya tienes Docker instalado, procedemos a la configuración de <strong>docker compose</strong>:</p>
+<pre><code class="language-yml">version: '3.8'
+services:
+  sql1: # Nombre del contenedor
+    image: mcr.microsoft.com/mssql/server:2019-latest # Imagen de SQL Server
+    container_name: sql1 # Nombre del contenedor
+    hostname: sql1 # Nombre del host
+    environment:
+      - ACCEPT_EULA=Y # Acepta los términos de uso
+      - MSSQL_SA_PASSWORD=D3v3#2021 # Contraseña del usuario SA
+    ports:
+      - &quot;1433:1433&quot; # Puerto de SQL Server
+    volumes:
+      - sql1data:/var/opt/mssql # Volumen para persistir los datos
+    restart: unless-stopped # Reiniciar el contenedor al reiniciar sistema si no se detiene manualmente
+
+volumes:
+  sql1data: # Volumen para persistir los datos
+</code></pre>
+<blockquote>
+<p>La parte mas importante es la <strong>MSSQL_SA_PASSWORD</strong>, que es la contraseña del usuario <em>"a"</em>. Asegúrate de cambiarla por una contraseña segura y de recordarla, ya que la necesitarás para conectarte a la base de datos.</p>
+<p>Podemos cambiar el <strong>2019</strong> por otra versión de SQL Server.</p>
+</blockquote>
+<p>Guarda el archivo con el nombre <code>docker-compose.yml</code> y ejecuta el siguiente comando:</p>
+<pre><code class="language-bash">docker compose up -d
+</code></pre>
+<p>Después de unos minutos, el contenedor de SQL Server debería estar corriendo. Puedes verificarlo con el siguiente comando:</p>
+<pre><code class="language-bash">docker ps
+</code></pre>
+<h2 id="conexion-a-sql-server">Conexión a SQL Server</h2>
+<p>Para conectarte a SQL Server, puedes usar cualquier cliente de SQL Server, como <a href="https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-ver15">Azure Data Studio</a> o <a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15">SQL Server Management Studio</a>. También puedes usar la línea de comandos con <code>sqlcmd</code>:</p>
+<pre><code class="language-bash">docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S &lt;IP&gt; -U SA -P 'D3v3#2021'
+</code></pre>
+<p>Para conectar necesitamos acceso a la maquina en donde esta el servidor <em>(si no es el mismo)</em> y debemos utilizar su IP como nombre del servidor.
+Las credenciales son las que definimos en el archivo <code>docker-compose.yml</code>, con usuario <strong>SA</strong>.</p>
 <style>
 .search-results {
   display: none;
@@ -772,10 +863,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.tracking", "toc.follow", "search.suggest", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "toc.follow", "search.suggest", "header.autohide"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>
