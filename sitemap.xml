@@ -41,6 +41,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.emas-solutions.es/emas/github_ssh/</loc>
+         <lastmod>2024-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.emas-solutions.es/odoo/backups/</loc>
          <lastmod>2024-03-05</lastmod>
          <changefreq>daily</changefreq>

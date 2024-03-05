@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.emas-solutions.es/cloudflare/tuneles/basic_config/">
+        <link rel="canonical" href="https://docs.emas-solutions.es/emas/github_ssh/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../estructura/">
       
       
-        <link rel="next" href="../../../emas/docker_mssql/">
+        <link rel="next" href="../../odoo/backups/">
       
       
-      <link rel="icon" href="../../../assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
       
-        <title>Crear subdominio - Emas Docs</title>
+        <title>Github EMAS SSH - Emas Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#crear-subdominio" class="md-skip">
+        <a href="#github-emas-ssh" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Emas Docs" class="md-header__button md-logo" aria-label="Emas Docs" data-md-component="logo">
+    <a href="../.." title="Emas Docs" class="md-header__button md-logo" aria-label="Emas Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Crear subdominio
+              Github EMAS SSH
             
           </span>
         </div>
@@ -187,7 +187,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Emas Docs" class="md-nav__button md-logo" aria-label="Emas Docs" data-md-component="logo">
+    <a href="../.." title="Emas Docs" class="md-nav__button md-logo" aria-label="Emas Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -205,7 +205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -225,7 +225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -234,6 +234,182 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cloudflare
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cloudflare
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloudflare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Que es Cloudflare?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloudflare/ssl_odoo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSL Odoo + Cloudflare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tuneles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tuneles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloudflare/tuneles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Que es un túnel?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloudflare/tuneles/basic_config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Crear subdominio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -259,24 +435,24 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    Cloudflare
+    Emas
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Cloudflare
+            Emas
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -287,11 +463,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../docker_mssql/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Que es Cloudflare?
+    SQL Server Docker
   </span>
   
 
@@ -308,71 +484,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ssl_odoo/" class="md-nav__link">
+      <a href="../estructura/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    SSL Odoo + Cloudflare
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tuneles
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            Tuneles
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Que es un túnel?
+    Estructura de EMAS
   </span>
   
 
@@ -402,7 +518,7 @@
           
   
   <span class="md-ellipsis">
-    Crear subdominio
+    Github EMAS SSH
   </span>
   
 
@@ -413,7 +529,7 @@
         
   
   <span class="md-ellipsis">
-    Crear subdominio
+    Github EMAS SSH
   </span>
   
 
@@ -435,51 +551,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tiene-un-tunel-la-maquina-servidor" class="md-nav__link">
+  <a href="#generar-una-llave-ssh" class="md-nav__link">
     <span class="md-ellipsis">
-      Tiene un tunel la maquina servidor?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tiene un tunel la maquina servidor?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dominio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dominio
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servicio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Servicio
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resumen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resumen
+      Generar una llave SSH
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#annexos" class="md-nav__link">
+  <a href="#agregar-la-llave-ssh-a-ssh-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Annexos
+      Agregar la llave SSH a ssh-agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agregar-la-llave-ssh-a-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregar la llave SSH a GitHub
     </span>
   </a>
   
@@ -489,124 +581,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Emas
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Emas
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../emas/docker_mssql/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SQL Server Docker
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../emas/estructura/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Estructura de EMAS
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../emas/github_ssh/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Github EMAS SSH
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -666,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../odoo/backups/" class="md-nav__link">
+      <a href="../../odoo/backups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -687,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../odoo/odoofy/" class="md-nav__link">
+      <a href="../../odoo/odoofy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -708,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../odoo/server_management/" class="md-nav__link">
+      <a href="../../odoo/server_management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,51 +730,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tiene-un-tunel-la-maquina-servidor" class="md-nav__link">
+  <a href="#generar-una-llave-ssh" class="md-nav__link">
     <span class="md-ellipsis">
-      Tiene un tunel la maquina servidor?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tiene un tunel la maquina servidor?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dominio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dominio
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#servicio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Servicio
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resumen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resumen
+      Generar una llave SSH
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#annexos" class="md-nav__link">
+  <a href="#agregar-la-llave-ssh-a-ssh-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Annexos
+      Agregar la llave SSH a ssh-agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agregar-la-llave-ssh-a-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregar la llave SSH a GitHub
     </span>
   </a>
   
@@ -821,53 +771,26 @@
                   
 
 
-<h1 id="crear-subdominio">Crear subdominio</h1>
-<h4 id="tiene-un-tunel-la-maquina-servidor"><a href="../#la-maquina-tiene-un-tunel">Tiene un tunel la maquina servidor?</a></h4>
-<p>Debemos ir al apartado de Zero Trust → Tunnels de la página <a href="https://one.dash.cloudflare.com/">Dashboard de Cloudflare</a>.
-<img alt="DemoZeroTrust" src="../ZeroTrust.png" />
-<img alt="SeccionTunelesDemo" src="../Tuneles.png" />
-Una vez aquí vamos a ver listados todos los túneles existentes enlazados a nuestra cuenta.
-La página muestra una lista de túneles con:  </p>
-<ul>
-<li>El nombre del túnel  </li>
-<li>La URL o Dirección desde la que se accede al túnel  </li>
-<li>Su estado (Funcional o No)  </li>
-</ul>
-<p>Si le damos a configurar un tunel <em>(sabiendo a que maquina se dirige éste)</em>, podemos ver, modificar y crear los subdominios que deseemos.
-<img alt="TunelConfig" src="../TunelConfig.png" />  </p>
-<p>Configuración:
-<img alt="TunelHostnames" src="../TunelHostnames.png" />
-En la sección de Public Hostname vamos a configurar como se relaciona el dominio de acceso con el puerto e IP de la máquina destino. Si le damos click a nuevo vamos a ver la siguiente configuración:
-<img alt="HostnameConfig" src="../HostnameConfig.png" />
-Aquí hay 2 partes a tener en cuenta.</p>
-<h5 id="dominio">Dominio</h5>
-<p>En las primeras 3 cajas vamos a determinar la configuración de dominio. Imaginemos en este caso que el dominio desde el que queremos acceder al servicio que servira este tunel es tutorial_cloudflare.emas-solutions.es.  </p>
-<ul>
-<li><code>tutorial_cloudflare</code> va a ser el subdominio y debería ser diferente para cada servicio</li>
-<li><code>emas_solutions.es</code> es nuestro dominio, que deberá seleccionarse de los dominios existentes</li>
-<li>La parte de PATH la dejaremos vacía ya que normalmente se usa para sub- servicios.</li>
-</ul>
-<h5 id="servicio">Servicio</h5>
-<p>En la parte de abajo habrá la configuración que sirve para conectar con el servicio deseado en la máquina destino (servidor).
-En este ejemplo vamos a servir una app simple en la misma máquina que expone el puerto 12345.
-Generalmente los servicios en local se acceden por HTTP, así que eso es lo que pondremos:
-<img alt="HTTPExample" src="../HTTPExample.png" /></p>
-<h4 id="resumen">Resumen</h4>
-<p>La configuración explicada consigue que desde el dominio tutorial_cloudflare.emas_solutions.es podamos acceder al servicio que se ejecuta en la
-máquina por el puerto 12345 como si estuviéramos en esta.  </p>
-<p>Servido desde HTTPS por supuesto.  </p>
-<p>Entonces si desde la maquina ejecutamos localhost:12345 deberemos ver lo mismo que visitando el dominio especificado.</p>
-<h4 id="annexos">Annexos</h4>
-<p>Normalmente las conexiones de los túneles son de HTTP a HTTPS, siendo así solo encriptadas desde Cloudflare al público:
-<img alt="HalfEncrypt" src="../HalfEncrypt.png" /><br />
-Si bien esto facilita mucho las cosas al no requerir ninguna configuración ni montaje relacionada con los certificados; puede llegar a provocar algún problema al tratar con servicios y conexiones más complejas como la integración de Outlook mail de Microsoft.  </p>
-<p>Entonces en algún caso se encripta con certificado la conexión a dos bandas:
-<img alt="FullEncrypt" src="../FullEncrypt.png" /></p>
-<style>
-.search-results {
-  display: none;
-}
-</style>
+<h1 id="github-emas-ssh">Github EMAS SSH</h1>
+<p>En muchos repositorios, para poder colaborar con el código, es necesario tener una llave SSH enlazada a tu cuenta de GitHub. Esto es necesario para poder hacer <em>push</em> y <em>pull</em> de los cambios en el repositorio.</p>
+<h2 id="generar-una-llave-ssh">Generar una llave SSH</h2>
+<p>Para generar una llave SSH, primero debemos abrir una terminal y ejecutar el siguiente comando:</p>
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>Nos pedirá una ubicación para guardar la llave, por defecto es <code>~/.ssh/id_ed25519</code>. Si no queremos cambiar la ubicación, simplemente presionamos <em>Enter</em>.</p>
+<p>Luego nos pedirá una contraseña, <strong>no recomendamos poner contraseña</strong> ya que obstaculiza el funcionamiento de GitHub, simplemente presionamos <em>Enter</em> dos veces.</p>
+<h2 id="agregar-la-llave-ssh-a-ssh-agent">Agregar la llave SSH a ssh-agent</h2>
+<p>El <code>ssh-agent</code> es un programa que guarda las llaves SSH en memoria y las utiliza para autenticar las conexiones SSH. Si no lo tenemos corriendo, debemos iniciar el servicio con el siguiente</p>
+<pre><code class="language-bash">eval &quot;$(ssh-agent -s)&quot;
+</code></pre>
+<p>Luego, agregamos la llave SSH al <code>ssh-agent</code> con el siguiente comando:</p>
+<pre><code class="language-bash">ssh-add ~/.ssh/id_ed25519
+</code></pre>
+<h2 id="agregar-la-llave-ssh-a-github">Agregar la llave SSH a GitHub</h2>
+<p>Para agregar la llave SSH a GitHub, primero debemos copiar el contenido de la llave <strong>publica</strong> con el siguiente comando:</p>
+<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
+</code></pre>
+<p>Luego, debemos ir a la configuración de nuestra cuenta de GitHub, en la sección de <strong>SSH and GPG keys</strong> y hacer click en <strong>New SSH key</strong>. Pegamos el contenido de la llave en el campo <strong>Key</strong> y le damos un nombre descriptivo.</p>
 
 
 
@@ -914,10 +837,10 @@ Si bien esto facilita mucho las cosas al no requerir ninguna configuración ni m
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tracking", "toc.follow", "search.suggest", "header.autohide"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tracking", "toc.follow", "search.suggest", "header.autohide"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>
