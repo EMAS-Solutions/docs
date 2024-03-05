@@ -2,7 +2,7 @@
 Un túnel de Cloudflare es una conexión segura que permite enrutar el tráfico de un servidor web a través del domino especificado. Esto proporciona beneficios como mejoras en la seguridad, el rendimiento y la disponibilidad del sitio web de manera segura y extremadamente sencilla.
 
 ### Quiero un nuevo subdominio disponible, como creo el túnel?
-És posible que no necesites crear un túnel; cada máquina o servidor que tenga servicios a publicar solo necesita __un solo túnel__ _([o ninguno*](#tunel-maestro)_),
+És posible que no necesites crear un túnel; cada máquina o servidor que tenga servicios a publicar solo necesita __un solo túnel__ _([o ninguno*](#tunel-maestro))_,
 ya que éste va a crear nuestra salida de la maquina hacia la gestión de Cloudflare, desde la que se hará la configuración de todos servicios y dominios existentes.
 
 ##### [Quiero crear solo un subdominio](basic_config.md)
@@ -37,7 +37,11 @@ y copiar el script de instalado __(seleccionar sistema operativo primero)__, és
 
 ### Annexo
 #### Túnel maestro
-Proximamente...
+Aunque ésta es una practica no confirmada, es posible que una máquina pueda tener un túnel maestro que permita la creación de subdominios sin necesidad de instalar un túnel en cada máquina de la misma red.
+
+Si en la configuración al montar un túnel modificamos la parte de `localhost` por una ip, podemos acceder a una maquina en la red de la máquina que tiene el túnel _(siempre que ésta sea accesible por ese puerto por la red local)_.
+
+Ésto es útil para montar un router en la red local que permita el acceso a todos los servicios de la red local a través de un solo túnel y sin necesidad de instalarlo en cada máquina. Cosa que conlleva a una mayor seguridad y facilidad de gestión.
 
 <style>
 .search-results {
