@@ -1,3 +1,20 @@
 site_name: Emas Docs
 site_url: https://docs.emas-solutions.es
-theme: gitbook
+theme:
+  name: material
+  palette:
+    primary: black
+  font:
+    text: "Montserrat"
+    code: "Consolas Mono"
+  favicon: assets/favicon.png
+  features:
+    - navigation.sections
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - header.autohide
+plugins:
+  - search
+extra_css:
+  - stylesheets/extra.css

@@ -2,7 +2,7 @@
 Un túnel de Cloudflare es una conexión segura que permite enrutar el tráfico de un servidor web a través del domino especificado. Esto proporciona beneficios como mejoras en la seguridad, el rendimiento y la disponibilidad del sitio web de manera segura y extremadamente sencilla.
 
 ### Quiero un nuevo subdominio disponible, como creo el túnel?
-És posible que no necesites crear un túnel; cada máquina o servidor que tenga servicios a publicar solo necesita __un solo túnel__ _([o ninguno*](#Túnel maestro)_),
+És posible que no necesites crear un túnel; cada máquina o servidor que tenga servicios a publicar solo necesita __un solo túnel__ _([o ninguno*](#tunel-maestro)_),
 ya que éste va a crear nuestra salida de la maquina hacia la gestión de Cloudflare, desde la que se hará la configuración de todos servicios y dominios existentes.
 
 ##### [Quiero crear solo un subdominio](basic_config.md)

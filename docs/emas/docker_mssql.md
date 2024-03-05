@@ -29,7 +29,9 @@ services:
 volumes:
   sql1data: # Volumen para persistir los datos
 ```
-> La parte mas importante es la MSSQL_SA_PASSWORD, que es la contraseña del usuario SA. Asegúrate de cambiarla por una contraseña segura y de recordarla, ya que la necesitarás para conectarte a la base de datos.
+> La parte mas importante es la __MSSQL_SA_PASSWORD__, que es la contraseña del usuario _"a"_. Asegúrate de cambiarla por una contraseña segura y de recordarla, ya que la necesitarás para conectarte a la base de datos.
+>
+> Podemos cambiar el __2019__ por otra versión de SQL Server.
 
 Guarda el archivo con el nombre `docker-compose.yml` y ejecuta el siguiente comando:
 ```bash
@@ -48,7 +50,6 @@ docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S <IP> -U SA -P 'D3v3#2021'
 ```
 Para conectar necesitamos acceso a la maquina en donde esta el servidor _(si no es el mismo)_ y debemos utilizar su IP como nombre del servidor.
 Las credenciales son las que definimos en el archivo `docker-compose.yml`, con usuario __SA__.
-
 
 <style>
 .search-results {
