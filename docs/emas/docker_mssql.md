@@ -38,6 +38,8 @@ Guarda el archivo con el nombre `docker-compose.yml` y ejecuta el siguiente coma
 docker compose up -d
 ```
 
+> Si el nombre de archivo no es `docker-compose.yml` debemos especificarlo en el comando: `docker compose -f <nombre_archivo>.yml up -d`
+
 Después de unos minutos, el contenedor de SQL Server debería estar corriendo. Puedes verificarlo con el siguiente comando:
 ```bash
 docker ps
